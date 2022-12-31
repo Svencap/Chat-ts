@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { SocketContext } from '../contexts/socket.jsx';
+import { SocketContext } from '../contexts/socket';
 
 const useChat = () => useContext(SocketContext);
 

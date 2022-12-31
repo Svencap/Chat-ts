@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 interface AuthContext {
-    user: string,
+    user: { token: string, username: string },
     logIn: () => void,
     logOut: () => void
     loggedIn: any
