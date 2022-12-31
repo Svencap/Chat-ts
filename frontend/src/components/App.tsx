@@ -16,20 +16,27 @@ import "../App.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 
-import LoginPage from "./Login.jsx";
+import LoginPage from "./Login";
 import NotFoundPage from "./Not_FoundPage.jsx";
 import SingUpPage from "./SignUp.jsx";
 import Navbar from "./HeaderNavbar.jsx";
 import routes from "../routes.js";
-import AuthContext from "../contexts/index.jsx";
+import AuthContext from "../contexts/index";
 import useAuth from "../hooks/index.jsx";
-import Chat from "./Chat/Chat.jsx";
+import Chat from "./Chat/Chat";
 
-const AuthProvider = ({ children }) => {
-  const [loggedIn, setLoggedIn] = useState(null);
+type ProviderProps = {
+  children: JSX.Element | JSX.Element[];
+}
+
+
+const AuthProvider = ({ children }: ProviderProps) => {
+  const [loggedIn, setLoggedIn] = useState<boolean>();
 
   const logIn = () => setLoggedIn(true);
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user") || 'null');
+
+  console.log(user);
 
   const logOut = () => {
     localStorage.removeItem("user");
@@ -43,7 +50,9 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-const PrivateRoute = ({ children }) => {
+// Пофиксить PrivateRoute;
+
+const PrivateRoute = ({ children }: any) => {
   const auth = useAuth();
   const location = useLocation();
 

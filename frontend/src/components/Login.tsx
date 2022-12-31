@@ -15,7 +15,7 @@ import routes from "../routes";
 import useAuth from "../hooks/index.jsx";
 
 const LoginPage = () => {
-  const [successAuth, setSuccessAuth] = useState(' ');
+  const [successAuth, setSuccessAuth] = useState(true);
   const auth = useAuth();
   const navigation = useNavigate();
   const { t } = useTranslation();
@@ -33,19 +33,19 @@ const LoginPage = () => {
         setSuccessAuth(true);
         navigation('/', { replace: true });
       } catch (e) {
-        if (e.message === 'Network Error') {
-          toast.error(t('tostify.errors.network'));
-        } else setSuccessAuth(false);
+        // if (e.message === 'Network Error') {
+        //   toast.error(t('tostify.errors.network'));
+        // } else setSuccessAuth(false);
       }
     },
   });
 
   const ref = useRef(null);
 
-  useEffect(() => {
-    localStorage.clear();
-    ref.current.focus();
-  }, []);
+  // useEffect(() => {
+  //   localStorage.clear();
+  //   // ref.current.focus();
+  // }, []);
 
   return (
     <div className="h-100">
@@ -94,7 +94,7 @@ const LoginPage = () => {
                         controlId="password"
                         label="Пароль"
                         className="mb-3"
-                        type="password"
+                        // type="password"
                       >
                         <Form.Control
                           type="password"

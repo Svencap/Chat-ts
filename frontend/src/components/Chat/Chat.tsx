@@ -11,28 +11,30 @@ import { actions as channelActions } from '../../slices/channelSlice.js';
 import { actions as viewActions } from '../../slices/viewSlice.js';
 import { actions as messageSlice } from '../../slices/messageSlice.js';
 
-import InputChat from './FormChat.jsx';
+import InputChat from './FormChat';
 import Messeges from './Messeges.jsx';
 import HeaderChatList from './HeaderChat.jsx';
-import ChannelList from './ChannelLIst.jsx';
+import ChannelList from './ChannelLIst';
 
 const Chat = () => {
   const dispatch = useDispatch();
 
-  const getNormalalized = (data) => {
-    const entities = data.reduce((acc, item) => {
+//{ channels: [...], currentChannelId: 1, messages: [] }
+
+  const getNormalalized = (data: []) => {
+    const entities = data.reduce((acc: any, item: { id: number }) => {
       acc[item.id] = item;
       return acc;
     }, {});
 
-    const ids = data.map((item) => item.id);
+    const ids = data.map((item: { id: number }) => item.id);
     return { entities, ids };
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { token } = JSON.parse(localStorage.getItem('user', 'token'));
+        const { token } = JSON.parse(localStorage.getItem('user') || 'null');
         const { data } = await axios.get(routes.dataPath(), {
           headers: { Authorization: `Bearer ${token}` },
         });

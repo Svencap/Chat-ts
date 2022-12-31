@@ -8,10 +8,10 @@ import { selectors as channelSelectors } from '../../slices/channelSlice';
 
 const Channels = () => {
   const channels = useSelector(channelSelectors.selectAll);
-  const { username } = JSON.parse(localStorage.getItem('user'));
+  const { username } = JSON.parse(localStorage.getItem('user') || 'null');
   return (
     <ul className="nav flex-column nav-pills nav-fill px-2">
-      {channels.map((channel) => <Channel key={channel.id} channel={channel} currentChannel={1} user={username} />)}
+      {channels.map((channel) => <Channel key={channel.id} channel={channel} user={username} />)}
     </ul>
   );
 };
