@@ -36,8 +36,6 @@ const AuthProvider = ({ children }: ProviderProps) => {
   const logIn = () => setLoggedIn(true);
   const user = JSON.parse(localStorage.getItem("user") || 'null');
 
-  console.log(user);
-
   const logOut = () => {
     localStorage.removeItem("user");
     setLoggedIn(false);
