@@ -19,7 +19,7 @@ import { ToastContainer } from "react-toastify";
 import LoginPage from "./Login";
 import NotFoundPage from "./Not_FoundPage.jsx";
 import SingUpPage from "./SignUp.jsx";
-import Navbar from "./HeaderNavbar.jsx";
+import Navbar from "./HeaderNavbar";
 import routes from "../routes.js";
 import AuthContext from "../contexts/index";
 import useAuth from "../hooks/index.jsx";

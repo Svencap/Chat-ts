@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Channel from './Channel.jsx';
+import Channel from './Channel';
 import { selectors as channelSelectors } from '../../slices/channelSlice';
 
 const Channels = () => {
