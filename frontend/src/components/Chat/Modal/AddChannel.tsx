@@ -13,7 +13,7 @@ import {
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
 import { selectors as channelSelectors } from '../../../slices/channelSlice.js';
-import useChat from '../../../hooks/useChat.jsx';
+import useChat from '../../../hooks/useChat';
 
 interface AddChannelProps {
   show: boolean,

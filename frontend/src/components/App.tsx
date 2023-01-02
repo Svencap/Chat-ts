@@ -18,11 +18,11 @@ import { ToastContainer } from "react-toastify";
 
 import LoginPage from "./Login";
 import NotFoundPage from "./Not_FoundPage.jsx";
-import SingUpPage from "./SignUp.jsx";
+import SingUpPage from "./SignUp";
 import Navbar from "./HeaderNavbar";
 import routes from "../routes.js";
 import AuthContext from "../contexts/index";
-import useAuth from "../hooks/index.jsx";
+import useAuth from "../hooks/index";
 import Chat from "./Chat/Chat";
 
 type ProviderProps = {

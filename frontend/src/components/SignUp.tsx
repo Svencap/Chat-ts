@@ -12,10 +12,10 @@ import cn from "classnames";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import routes from "../routes";
-import useAuth from "../hooks/index.jsx";
+import useAuth from "../hooks/index";
 
 const SingUpPage = () => {
-  const [successAuth, setSuccessAuth] = useState(' ');
+  const [successAuth, setSuccessAuth] = useState(true);
   const ref = useRef(null);
   const { t } = useTranslation();
 
@@ -35,9 +35,9 @@ const SingUpPage = () => {
     ),
   });
 
-  useEffect(() => {
-    ref.current.focus();
-  }, []);
+  // useEffect(() => {
+  //   ref.current.focus();
+  // }, []);
 
   const f = useFormik({
     initialValues: {
@@ -111,7 +111,6 @@ const SingUpPage = () => {
                         controlId="password"
                         label={t('signup.password')}
                         className="mb-3"
-                        type="password"
                       >
                         <Form.Control
                           type="password"

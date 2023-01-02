@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 import * as Yup from 'yup';
 import { selectors as channelSelectors } from '../../../slices/channelSlice.js';
-import useChat from '../../../hooks/useChat.jsx';
+import useChat from '../../../hooks/useChat';
 
 interface RenameChannelProps {
   show: boolean,

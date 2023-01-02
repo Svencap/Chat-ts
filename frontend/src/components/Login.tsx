@@ -12,7 +12,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import routes from "../routes";
-import useAuth from "../hooks/index.jsx";
+import useAuth from "../hooks/index";
 
 const LoginPage = () => {
   const [successAuth, setSuccessAuth] = useState(true);

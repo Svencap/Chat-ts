@@ -15,7 +15,7 @@ import Picker from '@emoji-mart/react';
 
 import { Form } from 'react-bootstrap';
 import { useFormik } from 'formik';
-import useChat from '../../hooks/useChat.jsx';
+import useChat from '../../hooks/useChat';
 
 const filter = require('leo-profanity');
 
