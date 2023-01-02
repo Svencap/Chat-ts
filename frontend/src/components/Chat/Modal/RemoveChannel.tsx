@@ -16,9 +16,9 @@ type RemoveChannelProps = {
 }
 
 const RemoveChannel = ({ show, close, id }: RemoveChannelProps) => {
-  console.log(id)
   const { t } = useTranslation();
   const { removeChannel } = useChat();
+
   const handleRemoveChannel = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
     removeChannel(id);

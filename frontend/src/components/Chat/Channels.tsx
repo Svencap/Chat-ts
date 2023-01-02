@@ -2,12 +2,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks/reduxHooks';
 import Channel from './Channel';
 import { selectors as channelSelectors } from '../../slices/channelSlice';
 
 const Channels = () => {
-  const channels = useSelector(channelSelectors.selectAll);
+  const channels = useAppSelector(channelSelectors.selectAll);
   const { username } = JSON.parse(localStorage.getItem('user') || 'null');
   return (
     <ul className="nav flex-column nav-pills nav-fill px-2">

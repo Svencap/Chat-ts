@@ -16,7 +16,7 @@ import useAuth from "../hooks/index";
 
 const SingUpPage = () => {
   const [successAuth, setSuccessAuth] = useState(true);
-  const ref = useRef(null);
+  const ref = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
 
   const navigation = useNavigate();
@@ -35,9 +35,11 @@ const SingUpPage = () => {
     ),
   });
 
-  // useEffect(() => {
-  //   ref.current.focus();
-  // }, []);
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.focus();
+    }
+  }, []);
 
   const f = useFormik({
     initialValues: {
@@ -87,8 +89,8 @@ const SingUpPage = () => {
                           type="text"
                           placeholder={t('signup.username')}
                           required
-                          ref={ref}
                           onChange={f.handleChange}
+                          ref={ref}
                           name="username"
                           className={cn(
                             "form-control",

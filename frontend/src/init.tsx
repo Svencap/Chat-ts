@@ -8,7 +8,7 @@ import { io, Socket } from "socket.io-client";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import resources from "./locales/index.js";
 import App from "./components/App";
-import store from "./slices/index.js";
+import store from "./slices/index";
 import SocketProvider from "./contexts/socket";
 import "bootstrap/dist/css/bootstrap.min.css";
 

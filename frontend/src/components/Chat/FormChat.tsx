@@ -20,13 +20,13 @@ import useChat from '../../hooks/useChat';
 const filter = require('leo-profanity');
 
 const InputChat = () => {
-  const ref = useRef();
+  const ref = useRef<HTMLInputElement>(null);
   const { newMessage } = useChat();
 
   const [openEmoji, setOpenEmoji] = useState(false);
 
-  const channelId = useSelector((state) => state.viewSlice.activeChannelId);
-  const { username } = JSON.parse(localStorage.getItem('user'));
+  const channelId = useSelector((state: any) => state.viewSlice.activeChannelId);
+  const { username } = JSON.parse(localStorage.getItem('user') || 'null');
 
   const formik = useFormik({
     initialValues: {
@@ -39,28 +39,28 @@ const InputChat = () => {
         username,
       };
       newMessage(message);
-      ref.current.value = '';
+      if (ref.current) {
+        ref.current.value = '';
+      }
       resetForm({ values: { message: '' } });
     },
   });
 
   useEffect(() => {
-    ref.current.focus();
+    if (ref.current) {
+      ref.current.focus();
+    }
   }, []);
 
-  const emojiPickerOpen = (e) => {
-    setOpenEmoji(true);
-  };
+  const emojiPickerOpen = () => setOpenEmoji(true);
 
-  const emojiPickerClose = (e) => {
-    setOpenEmoji(false);
-  };
+  const emojiPickerClose = () => setOpenEmoji(false);
 
   return (
     <div className="mt-auto px-5 py-3 position-relative">
       <div className="d-flex flex-row flex_form_chat">
         <Form
-          noValidate=""
+          noValidate
           onSubmit={formik.handleSubmit}
           className="py-1 flex-grow-1 border rounded-2"
         >
@@ -107,8 +107,10 @@ const InputChat = () => {
               <Picker
                 previewPosition="none"
                 data={dataEmoji}
-                onEmojiSelect={(emoji) => {
-                  ref.current.value += emoji.native;
+                onEmojiSelect={(emoji: any) => {
+                  if (ref.current) {
+                    ref.current.value += emoji.native;
+                  }
                   formik.values.message += emoji.native;
                 }}
                 locale="ru"

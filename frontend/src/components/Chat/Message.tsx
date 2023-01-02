@@ -8,7 +8,6 @@ interface MessageProps {
 }
 
 const Message = ({ message }: MessageProps) => {
-  console.log(message);
   const { body, id, username } = message;
   return (
     <div className="text-break mb-2">

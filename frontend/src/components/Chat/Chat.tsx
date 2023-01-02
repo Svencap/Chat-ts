@@ -2,12 +2,13 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
+import { useAppDispatch } from '../../hooks/reduxHooks';
 import { useDispatch } from 'react-redux';
 
 import axios from 'axios';
 import routes from '../../routes';
 
-import { actions as channelActions } from '../../slices/channelSlice.js';
+import { actions as channelActions } from '../../slices/channelSlice';
 import { actions as viewActions } from '../../slices/viewSlice.js';
 import { actions as messageSlice } from '../../slices/messageSlice.js';
 
@@ -17,7 +18,7 @@ import HeaderChatList from './HeaderChat';
 import ChannelList from './ChannelLIst';
 
 const Chat = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
 //{ channels: [...], currentChannelId: 1, messages: [] }
 

@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { createContext } from 'react';
 import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../hooks/reduxHooks';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { Socket } from 'socket.io-client';
 
 import { actions as messageAction } from '../slices/messageSlice.js';
-import { actions as channelAction } from '../slices/channelSlice.js';
+import { actions as channelAction } from '../slices/channelSlice';
 import { actions as viewAction } from '../slices/viewSlice.js';
 
 interface SocketProviderProps {
@@ -24,7 +25,7 @@ interface SocketContext {
 export const SocketContext = createContext({} as SocketContext);
 
 const SocketProvider = ({ socket, children }: SocketProviderProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const { t } = useTranslation();
 

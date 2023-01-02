@@ -11,8 +11,9 @@ import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 import * as Yup from 'yup';
-import { selectors as channelSelectors } from '../../../slices/channelSlice.js';
+import { selectors as channelSelectors } from '../../../slices/channelSlice';
 import useChat from '../../../hooks/useChat';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 
 interface RenameChannelProps {
   show: boolean,
@@ -21,12 +22,12 @@ interface RenameChannelProps {
 }
 
 const RenameChannel = ({ show, close, id }: RenameChannelProps) => {
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
   const { renameChannel } = useChat();
 
-  const selectChannelName = useSelector((state) => channelSelectors.selectById(state, id)).name;
-  const channels = useSelector(channelSelectors.selectAll);
+  const selectChannelName = useAppSelector((state) => channelSelectors.selectById(state, id))?.name;
+  const channels = useAppSelector(channelSelectors.selectAll);
   const channelsNames = channels.map((channel) => channel.name);
 
   const channelSchema = Yup.object().shape({
@@ -49,11 +50,13 @@ const RenameChannel = ({ show, close, id }: RenameChannelProps) => {
     },
   });
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     inputRef.current.select();
-  //   }, 1);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.select();
+      }
+    }, 1);
+  }, []);
 
   return (
     <Modal show={show} onHide={close}>
@@ -69,7 +72,7 @@ const RenameChannel = ({ show, close, id }: RenameChannelProps) => {
               required
               onChange={formik.handleChange}
               value={formik.values.name}
-              // ref={inputRef}
+              ref={inputRef}
               className={cn(
                 'form-control',
                 formik.errors.name ? 'is-invalid' : 'valid',

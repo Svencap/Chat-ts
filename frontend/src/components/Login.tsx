@@ -40,12 +40,14 @@ const LoginPage = () => {
     },
   });
 
-  const ref = useRef(null);
+  const ref = useRef<HTMLInputElement>(null);
 
-  // useEffect(() => {
-  //   localStorage.clear();
-  //   // ref.current.focus();
-  // }, []);
+  useEffect(() => {
+    localStorage.clear();
+    if (ref.current) {
+      ref.current.focus();
+    }
+  }, []);
 
   return (
     <div className="h-100">
@@ -94,7 +96,6 @@ const LoginPage = () => {
                         controlId="password"
                         label="Пароль"
                         className="mb-3"
-                        // type="password"
                       >
                         <Form.Control
                           type="password"

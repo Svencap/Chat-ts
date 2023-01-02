@@ -1,16 +1,17 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks/reduxHooks';
 import { useTranslation } from 'react-i18next';
 import { selectors } from '../../slices/channelSlice';
 import { selectors as messageSelectors } from '../../slices/messageSlice.js';
 
 const HeaderChatList = () => {
-  const channels = useSelector(selectors.selectAll);
+  const channels = useAppSelector(selectors.selectAll);
   // Пофиксить Redux TS
   const activeChannelId = useSelector(({ viewSlice }: any) => viewSlice.activeChannelId);
   const { t } = useTranslation();
-  const messages = useSelector(messageSelectors.selectAll).filter(({ channelId }) => channelId === activeChannelId);
+  const messages = useAppSelector(messageSelectors.selectAll).filter(({ channelId }) => channelId === activeChannelId);
   const channelFind = channels.find(({ id }) => id === activeChannelId);
   const channelName = channelFind ? channelFind.name : null;
   return (
