@@ -17,7 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 
 import LoginPage from "./Login";
-import NotFoundPage from "./Not_FoundPage.jsx";
+import NotFoundPage from "./Not_FoundPage";
 import SingUpPage from "./SignUp";
 import Navbar from "./HeaderNavbar";
 import routes from "../routes.js";

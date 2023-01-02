@@ -7,7 +7,8 @@ import { selectors as messageSelectors } from '../../slices/messageSlice.js';
 
 const HeaderChatList = () => {
   const channels = useSelector(selectors.selectAll);
-  const activeChannelId = useSelector(({ viewSlice }) => viewSlice.activeChannelId);
+  // Пофиксить Redux TS
+  const activeChannelId = useSelector(({ viewSlice }: any) => viewSlice.activeChannelId);
   const { t } = useTranslation();
   const messages = useSelector(messageSelectors.selectAll).filter(({ channelId }) => channelId === activeChannelId);
   const channelFind = channels.find(({ id }) => id === activeChannelId);
@@ -20,7 +21,6 @@ const HeaderChatList = () => {
           {channelName}
         </b>
       </p>
-      {/* Добавить счетчик сообщений */ }
       <span className="text-muted">{t('chatPage.messages.count', { count: messages.length })}</span>
     </div>
   );

@@ -12,8 +12,8 @@ import { actions as viewActions } from '../../slices/viewSlice.js';
 import { actions as messageSlice } from '../../slices/messageSlice.js';
 
 import InputChat from './FormChat';
-import Messeges from './Messeges.jsx';
-import HeaderChatList from './HeaderChat.jsx';
+import Messeges from './Messeges';
+import HeaderChatList from './HeaderChat';
 import ChannelList from './ChannelLIst';
 
 const Chat = () => {
