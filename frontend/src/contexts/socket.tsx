@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, { createContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { useAppDispatch } from '../hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { Socket } from 'socket.io-client';
 
-import { actions as messageAction } from '../slices/messageSlice.js';
+import { actions as messageAction } from '../slices/messageSlice';
 import { actions as channelAction } from '../slices/channelSlice';
-import { actions as viewAction } from '../slices/viewSlice.js';
+import { actions as viewAction } from '../slices/viewSlice';
 
 interface SocketProviderProps {
   socket: Socket,
@@ -29,8 +29,9 @@ const SocketProvider = ({ socket, children }: SocketProviderProps) => {
 
   const { t } = useTranslation();
 
+  const messages = useAppSelector(state => state.messages);
+
   socket.on('newMessage', (payload: { body: string, channelId: number, id: number, username: string }) => {
-    console.log(payload);
     dispatch(messageAction.addNewMessage(payload));
   });
 
@@ -45,7 +46,9 @@ const SocketProvider = ({ socket, children }: SocketProviderProps) => {
   });
 
   socket.on('removeChannel', (payload: { id: number }) => {
-    dispatch(channelAction.removeChannel(payload));
+    const { id } = payload;
+    const restEntities = Object.values<any>(messages.entities).filter((e) => e.channelId !== id);
+    dispatch(channelAction.removeChannel({ id, entities: restEntities }));
   });
 
   const newChannel = (channel: { name: string }) => socket.emit('newChannel', channel, (response: any) => {

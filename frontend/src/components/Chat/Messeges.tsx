@@ -3,7 +3,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Message from './Message';
-import { selectors as messageSelectors } from '../../slices/messageSlice.js';
+import { selectors as messageSelectors } from '../../slices/messageSlice';
 
 const Messeges = () => {
   // Пофиксить Redux TS

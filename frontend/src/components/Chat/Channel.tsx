@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { actions as viewActions } from '../../slices/viewSlice.js';
+import { actions as viewActions } from '../../slices/viewSlice';
 import RenameChannel from './Modal/RenameChannel';
 import RemoveChannel from './Modal/RemoveChannel';
 

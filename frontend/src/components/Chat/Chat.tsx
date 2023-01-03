@@ -9,8 +9,8 @@ import axios from 'axios';
 import routes from '../../routes';
 
 import { actions as channelActions } from '../../slices/channelSlice';
-import { actions as viewActions } from '../../slices/viewSlice.js';
-import { actions as messageSlice } from '../../slices/messageSlice.js';
+import { actions as viewActions } from '../../slices/viewSlice';
+import { actions as messageSlice } from '../../slices/messageSlice';
 
 import InputChat from './FormChat';
 import Messeges from './Messeges';

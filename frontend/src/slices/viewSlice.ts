@@ -1,10 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { actions as channelSlice } from './channelSlice.ts';
+import { actions as channelSlice } from './channelSlice';
 
-const initialState = {
-  activeChannelId: null,
+interface ViewState {
+  activeChannelId: number
+}
+
+const initialState: ViewState = {
+  activeChannelId: 1,
 };
 
 const viewSlice = createSlice({
@@ -15,7 +19,6 @@ const viewSlice = createSlice({
       state.activeChannelId = actions.payload;
     },
     switchActiveChannel: (state, actions) => {
-      console.log(actions);
       state.activeChannelId = actions.payload;
     },
   },

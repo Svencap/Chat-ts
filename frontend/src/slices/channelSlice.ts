@@ -5,6 +5,8 @@ import { RootState } from "./index.js";
 // Чтобы не хардкодить урлы, делаем модуль, в котором они создаются
 import routes from "../routes.js";
 
+import { Message, EntitiesMessages } from "./messageSlice.js";
+
 interface Channel {
   id: number
   name: string
@@ -15,6 +17,7 @@ interface Channel {
 type Entities = {
   [index: number]: Channel
 }
+
 
 const channelAdapter = createEntityAdapter<Channel>();
 
@@ -29,7 +32,7 @@ const channelSlice = createSlice({
     },
     addNewChannel: channelAdapter.addOne,
     renameChannel: channelAdapter.updateOne,
-    removeChannel: (state, actions: PayloadAction<{ id: number }>) =>
+    removeChannel: (state, actions: PayloadAction<{ id: number, entities: Message[] }>) =>
       channelAdapter.removeOne(state, actions.payload.id),
   },
 });

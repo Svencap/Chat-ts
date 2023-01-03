@@ -5,6 +5,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 import { toast } from 'react-toastify';
 import useChat from '../../../hooks/useChat';
 
@@ -19,8 +20,11 @@ const RemoveChannel = ({ show, close, id }: RemoveChannelProps) => {
   const { t } = useTranslation();
   const { removeChannel } = useChat();
 
+  const messages = useAppSelector(state => state.messages);
+  
   const handleRemoveChannel = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
+    // const restEntities = Object.values(messages.entities).filter((e: any) => e.channelId !== id);
     removeChannel(id);
     close();
     // toast.success(t('tostify.successRemove'));

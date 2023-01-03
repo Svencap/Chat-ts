@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import dataReducer from './dataSlices.js';
 import channelSlice from './channelSlice';
-import viewSlice from './viewSlice.js';
-import messageSlice from './messageSlice.js';
+import viewSlice from './viewSlice';
+import messageSlice from './messageSlice';
 
 export const store = configureStore({
   reducer: {
