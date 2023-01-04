@@ -36,6 +36,7 @@ const LoginPage = () => {
         // if (e.message === 'Network Error') {
         //   toast.error(t('tostify.errors.network'));
         // } else setSuccessAuth(false);
+        setSuccessAuth(false);
       }
     },
   });

@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import i18next from "i18next";
 import { io, Socket } from "socket.io-client";
 import { I18nextProvider, initReactI18next } from "react-i18next";
-import resources from "./locales/index.js";
+import resources from "./locales/index";
 import App from "./components/App";
 import store from "./slices/index";
 import SocketProvider from "./contexts/socket";
